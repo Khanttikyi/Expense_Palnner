@@ -31,16 +31,21 @@ class ActionList extends StatelessWidget {
               ],
             );
           })
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              return Transaction_item(transaction: transactions[index], deleteItem: deleteItem);
-            },
-            itemCount: transactions.length,
-          );
+        // : ListView.builder(
+        //     itemBuilder: (ctx, index) {
+        //       return Transaction_item(transaction: transactions[index], deleteItem: deleteItem);
+        //     },
+        //     itemCount: transactions.length,
+        //   );
+
+        //Key//
+        : ListView(
+            children: transactions
+                .map((tx) =>
+                    Transaction_item(key:ValueKey(tx.id),transaction: tx, deleteItem: deleteItem))
+                .toList());
   }
 }
-
-
 
 //  return Container(
 //             margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
